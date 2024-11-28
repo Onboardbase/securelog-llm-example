@@ -5,3 +5,13 @@
 textarea {
 	resize: none;
 }
+
+/* ::selection {
+	color: #F5BE58;
+  @apply bg-orange-500/5;
+} */
+
+::selection {
+	@apply text-black;
+  @apply bg-white;
+}

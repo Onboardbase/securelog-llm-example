@@ -112,19 +112,35 @@ const SecureForm = () => {
           )}
         </button>
       </form>
-
-      <div className="flex gap-3 mt-3 items-center">
-        <div className="flex h-6 shrink-0 items-center">
-          <div className="group grid size-4 grid-cols-1">
-            <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" checked className="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-[#F5BE58] checked:bg-[#F5BE58] indeterminate:border-[#F5BE58] indeterminate:bg-[#F5BE58] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F5BE58] disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"/>
-            <svg className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25" viewBox="0 0 14 14" fill="none">
-              <path className="opacity-0 group-has-[:checked]:opacity-100" d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              <path className="opacity-0 group-has-[:indeterminate]:opacity-100" d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
+        
+      <div className="mt-3 space-y-1">
+        <div className="flex gap-3 items-center">
+          <div className="flex h-6 shrink-0 items-center">
+            <div className="group grid size-4 grid-cols-1">
+              <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" checked className="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-[#F5BE58] checked:bg-[#F5BE58] indeterminate:border-[#F5BE58] indeterminate:bg-[#F5BE58] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F5BE58] disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"/>
+              <svg className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25" viewBox="0 0 14 14" fill="none">
+                <path className="opacity-0 group-has-[:checked]:opacity-100" d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path className="opacity-0 group-has-[:indeterminate]:opacity-100" d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          <div className="text-sm">
+            <label className="font-medium text-white">Mask/remove on paste</label>
           </div>
         </div>
-        <div className="text-sm">
-          <label className="font-medium text-white">Mask on copy and paste</label>
+        <div className="flex gap-3 items-center">
+          <div className="flex h-6 shrink-0 items-center">
+            <div className="group grid size-4 grid-cols-1">
+              <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" checked className="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-[#F5BE58] checked:bg-[#F5BE58] indeterminate:border-[#F5BE58] indeterminate:bg-[#F5BE58] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F5BE58] disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"/>
+              <svg className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25" viewBox="0 0 14 14" fill="none">
+                <path className="opacity-0 group-has-[:checked]:opacity-100" d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path className="opacity-0 group-has-[:indeterminate]:opacity-100" d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          <div className="text-sm">
+            <label className="font-medium text-white">Remove secret not mask it</label>
+          </div>
         </div>
       </div>
 
@@ -143,7 +159,7 @@ const App = () => (
   <div className="relative flex flex-col p-8 sm:p-20">
     <h1 className="text-3xl font-semibold mb-6">✨ Securelog LLM Form Test</h1>
     <p className="text-sm text-gray-400 mb-6">
-      This shows how secrets are removed or masked when entered in an input
+      This shows how secrets can be removed or masked when entered in an input
       field.
     </p>
     <SecureForm />

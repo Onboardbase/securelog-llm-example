@@ -1,7 +1,7 @@
 {
-  "name": "my-test-app",
+  "name": "securelog-llm-test-app",
   "version": "1.0.0",
-  "description": "A simple app to test securelog sdk",
+  "description": "A simple app to test Securelog SDK",
   "main": "src/index.tsx",
   "scripts": {
     "dev": "vite",
@@ -9,9 +9,14 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.5.9",
+    "@tailwindcss/typography": "^0.5.15",
+    "autoprefixer": "^10.4.20",
     "axios": "^1.7.8",
+    "postcss": "^8.4.49",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "tailwindcss": "^3.4.15"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",

@@ -53,19 +53,20 @@ const SecureForm = () => {
     <div className="w-full">
       <form
         onSubmit={handleSubmit}
-        className="bg-white/5 border-gray-500/10 border rounded-lg flex flex-row overflow-hidden items-center"
+        className="bg-white/5 border-gray-500/10 border rounded-lg flex flex-row overflow-hidden items-start"
       >
         <textarea
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder="Enter your text here..."
-          className="bg-transparent text-white placeholder:text-gray-500 focus:outline-non focus:border-none focus:ring-0 border-none break-words break-all ring-0 text-xs outline-none py-2.5 selection:text-gray-500 px-3 font-mono w-full transition-all duration-300"
+          rows={3}
+          className="bg-transparent text-white placeholder:text-gray-500 resize-none focus:outline-non focus:border-none focus:ring-0 border-none break-words break-all ring-0 text-xs outline-none py-2.5 selection:text-gray-500 px-3 font-mono w-full transition-all duration-300"
         />
 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="text-white rounded-lg hover:bg-white/5 focus:bg-white/10 w-10 h-10 aspect-square flex items-center justify-center ring-0 outline-0"
+          className="text-white rounded-md hover:bg-white/5 m-1 focus:bg-white/10 w-8 h-8 aspect-square flex items-center justify-center ring-0 outline-0"
           style={{
             cursor: isSubmitting ? "not-allowed" : "pointer",
           }}
@@ -112,22 +113,26 @@ const SecureForm = () => {
         </button>
       </form>
 
+      <div className="flex gap-3 mt-3 items-center">
+        <div className="flex h-6 shrink-0 items-center">
+          <div className="group grid size-4 grid-cols-1">
+            <input id="comments" aria-describedby="comments-description" name="comments" type="checkbox" checked className="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-[#F5BE58] checked:bg-[#F5BE58] indeterminate:border-[#F5BE58] indeterminate:bg-[#F5BE58] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F5BE58] disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"/>
+            <svg className="pointer-events-none col-start-1 row-start-1 size-3.5 self-center justify-self-center stroke-white group-has-[:disabled]:stroke-gray-950/25" viewBox="0 0 14 14" fill="none">
+              <path className="opacity-0 group-has-[:checked]:opacity-100" d="M3 8L6 11L11 3.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path className="opacity-0 group-has-[:indeterminate]:opacity-100" d="M3 7H11" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+        <div className="text-sm">
+          <label className="font-medium text-white">Mask on copy and paste</label>
+        </div>
+      </div>
+
       {message && (
         <div
-          className="p-3 rounded-lg border"
-          style={{
-            marginTop: "20px",
-            whiteSpace: "pre-wrap",
-            backgroundColor: message.includes("Warning")
-              ? "#fff3cd"
-              : "#d4edda",
-            borderColor: `${
-              message.includes("Warning") ? "#ffeeba" : "#c3e6cb"
-            }`,
-            color: message.includes("Warning") ? "#856404" : "#155724",
-          }}
+          className="p-3 rounded-lg bg-[#F5BE58]/10 text-[#F5BE58] whitespace-pre-wrap mt-3"
         >
-          <p className="text-sm text-grey-400 mb-6">{message}</p>
+          <p className="text-sm text-grey-400 mb-6 font-medium">{message}</p>
         </div>
       )}
     </div>

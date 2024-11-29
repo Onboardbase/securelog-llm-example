@@ -18,7 +18,7 @@ const SecureForm = () => {
        * you can point this to https://api.securelog.com/mask-secret once the update is merged to live
        */
 
-      const { data } = await axios.post("http://localhost:3000/mask-secret", {
+      const { data } = await axios.post("https://api.securelog.com/mask-secret", {
         text: inputValue,
         maskedValue: "*",
         visibleChars: 5,

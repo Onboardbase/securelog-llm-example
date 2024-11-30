@@ -41,7 +41,7 @@ const SecureForm = () => {
           .filter((data: any) => data !== null)
           .map(
             (secret: { detectorType: string; rawValue: string }) =>
-              (warningMessage += `Detector Type: ${secret.detectorType}\nRaw Value: ${secret.rawValue}`)
+              (warningMessage += `Detector Type: ${secret.detectorType}\nRaw Value: ${secret.rawValue}\n\n`)
           );
 
         setMessage(warningMessage);

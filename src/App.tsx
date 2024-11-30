@@ -23,7 +23,7 @@ const SecureForm = () => {
       const { data } = await axios.post(
         "https://api.securelog.com/mask-secret",
         {
-          text: inputValue + e?.clipboardData?.getData("text"),
+          text: inputValue + (e?.clipboardData?.getData("text") || ""),
           maskedValue: removeSecrets ? "" : "*",
           visibleChars: removeSecrets ? 0 : 5,
         }

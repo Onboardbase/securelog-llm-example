@@ -29,12 +29,12 @@ const SecureForm = () => {
         }
       );
 
+      setInputValue(data?.rawValue);
+
       if (data.secrets.length) {
         /**
          * user can choose to reject submission here once secret has been detected in text
          */
-
-        setInputValue(data.rawValue);
 
         let warningMessage = `Warning: A new secret has been detected in text\n\n`;
         data.secrets

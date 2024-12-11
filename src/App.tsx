@@ -7,9 +7,35 @@ const SecureForm = () => {
   const [maskOnPaste, setMaskOnPaste] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState("");
+  const [customDetectorsInput, setCustomDetectorsInput] = useState(`{
+  "customDetectors": [
+    {
+      "regex": "\\\\b(FLWSECK-[0-9a-z]{32}-X)\\\\b",
+      "detectorType": "Flutterwave",
+      "keywords": ["FLWSECK-"]
+    }
+  ]
+}`);
+  const [jsonError, setJsonError] = useState("");
+
+  const validateJson = (jsonString: any) => {
+    try {
+      JSON.parse(jsonString);
+      setJsonError("");
+      return true;
+    } catch (error) {
+      if (jsonString !== "") {
+        setJsonError("Invalid JSON format");
+        return false;
+      }
+    }
+  };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    if (!validateJson(customDetectorsInput) && customDetectorsInput !== "")
+      return;
+
     setIsSubmitting(true);
 
     try {
@@ -20,12 +46,14 @@ const SecureForm = () => {
        * you can point this to https://api.securelog.com/mask-secret once the update is merged to live
        */
 
+      const customDetectors = JSON.parse(customDetectorsInput);
       const { data } = await axios.post(
         "https://api.securelog.com/mask-secret",
         {
           text: inputValue + (e?.clipboardData?.getData("text") || ""),
           maskedValue: removeSecrets ? "" : "*",
-          visibleChars: removeSecrets ? 0 : 5,
+          visibleChars: removeSecrets ? "0" : "5",
+          ...customDetectors,
         }
       );
 
@@ -206,6 +234,27 @@ const SecureForm = () => {
             </label>
           </div>
         </div>
+      </div>
+
+      <div className="mt-10">
+        <p className="text-sm text-gray-400 mb-6">
+          You can write your custom detectors below
+        </p>
+        <div className="bg-white/5 border-gray-500/10 border rounded-lg overflow-hidden ">
+          <textarea
+            value={customDetectorsInput}
+            onChange={(e) => {
+              setCustomDetectorsInput(e.target.value);
+              validateJson(e.target.value);
+            }}
+            placeholder="Enter custom JSON configuration..."
+            rows={10}
+            className="bg-transparent text-white placeholder:text-gray-500 resize-none focus:outline-none focus:border-none focus:ring-0 border-none break-words break-all ring-0 text-xs outline-none py-2.5 selection:text-gray-500 px-3 font-mono w-full transition-all duration-300"
+          />
+        </div>
+        {jsonError && (
+          <div className="mt-2 text-red-500 text-xs">{jsonError}</div>
+        )}
       </div>
 
       {message && (

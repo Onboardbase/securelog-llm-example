@@ -54,6 +54,11 @@ const SecureForm = () => {
           maskedValue: removeSecrets ? "" : "*",
           visibleChars: removeSecrets ? "0" : "5",
           ...customDetectors,
+        },
+        {
+          headers: {
+            "x-api-key": "SLS_7a7af634f5279f1a90ef1a637b199466",
+          },
         }
       );
 
